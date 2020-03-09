@@ -4,9 +4,9 @@
 
 #The following files are required in the same folder of the script for the installation to work:
 #hyper.deb
-#visualstudiocode.deb
+#code.deb
 #discord.deb
-#googlechrome.deb
+#chrome.deb
 
 #Get the .deb files from their respective websites and rename then
 
@@ -73,7 +73,7 @@ sudo apt-get install zsh -y
 echo
 
 echo "Installing Visual Studio Code and dependencies..."
-sudo dpkg -i visualstudiocode.deb
+sudo dpkg -i code.deb
 sudo apt-get install -f
 xdg-mime default code.desktop text/plain
 echo
