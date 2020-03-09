@@ -22,9 +22,8 @@ echo
 echo "Adding repositories..."
 echo
 sudo apt-add-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
-sudo add-apt-repository ppa:ubuntu-x-swat/x-updates # nvidia driver updates
-sudo add-apt-repository ppa:transmissionbt/ppa
-sudo add-apt-repository ppa:jd-team/jdownloader
+sudo apt-add-repository ppa:graphics-drivers/ppa && sudo apt update -y
+sudo ubuntu-drivers autoinstall
 
 #Update & Upgrade
 echo
@@ -45,11 +44,11 @@ printf "\n${YELLOW}Starting the installation of the development setup...${NORMAL
 echo
 ###########
 echo "Installing build-essentials..."
-sudo apt-get install build-essential -y
+sudo apt install build-essential -y
 echo
 
 echo "Installing curl..."
-sudo apt-get install curl -y
+sudo apt install curl -y
 echo
 
 echo "Installing Node Version Manager..."
@@ -61,7 +60,7 @@ nvm use 10
 echo
 
 echo "Installing git and ssh..."
-sudo apt-get install git ssh -y
+sudo apt install git ssh -y
 echo
 
 echo "Installing Hyper..."
@@ -69,7 +68,7 @@ sudo dpkg -i hyper.deb
 echo
 
 echo "Installing zhs..."
-sudo apt-get install zsh -y
+sudo apt install zsh -y
 echo
 
 echo "Installing Visual Studio Code and dependencies..."
@@ -84,24 +83,24 @@ printf "\n${GREEN}Starting the installation of utility programs...${NORMAL}\n"
 echo
 
 echo "Installing VLC..."
-sudo apt-get install vlc -y
+sudo apt install vlc -y
 echo
 
 echo "Installing Discord..."
 sudo dpkg -i discord.deb
-sudo apt-get install -f
+sudo apt install -f
 echo
 
 echo "Installing Mailspring..."
-sudo apt-get install mailspring -y
+sudo snap install mailspring
 echo
 
 echo "Installing Google Chrome..."
-sudo dpkg googlechrome.deb
+sudo dpkg chrome.deb
 echo
 
 echo "Installing Slack"
-sudo apt-get install slack -y
+sudo apt install slack -y
 echo
 
 echo "Installing Spotify"
@@ -113,10 +112,10 @@ printf "\n${GREEN}Utility programs sucessfully installed!${NORMAL}\n"
 #Cleaning up and finishing
 printf "\n${YELLOW}Cleaning up the cache and finishing...${NORMAL}\n"
 sudo apt-get update && sudo apt-get upgrade -y
-sudo apt-get autoclean
+sudo apt-get autoclean -y
+sudo apt-get autoremove -y 
 echo
 
 printf "\n${GREEN}All done! Make sure to execute the git_configure.sh to sync your Git to Github.${NORMAL}\n"
-
 
 fi
