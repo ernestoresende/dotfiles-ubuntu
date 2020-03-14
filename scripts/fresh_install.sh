@@ -66,10 +66,6 @@ echo "Installing Hyper..."
 sudo dpkg -i hyper.deb
 echo
 
-echo "Installing zhs..."
-sudo apt install zsh -y
-echo
-
 echo "Installing Visual Studio Code and dependencies..."
 sudo dpkg -i code.deb
 sudo apt-get install -f
@@ -87,7 +83,6 @@ echo
 
 echo "Installing Discord..."
 sudo dpkg -i discord.deb
-sudo apt install -f
 echo
 
 echo "Installing Mailspring..."
@@ -110,6 +105,7 @@ printf "\n${GREEN}Utility programs sucessfully installed!${NORMAL}\n"
 
 #Cleaning up and finishing
 printf "\n${YELLOW}Cleaning up the cache and finishing...${NORMAL}\n"
+sudo apt install -f
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get autoclean -y
 sudo apt-get autoremove -y 
