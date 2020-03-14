@@ -11,7 +11,7 @@
 #Get the .deb files from their respective websites and rename then
 
 ###Checking for the .deb files
-read -r -p "This script will install some programs trough the .deb files, and they should be in the same folder you're running the script from. Do you wish to proceed? [y/n] " RESP
+read -r -p "This script will install some programs using .deb files, and they should be in the same folder you're running the script from. Also, if you're going to use zsh as your shell, I'd recommend that you install and configure it before running this script, or you will have to deal with PATH shennanigans. Do you wish to proceed? [y/n] " RESP
 RESP=${RESP,,}    # tolower (only works with /bin/bash)
 if [[ $RESP =~ ^(yes|y)$ ]]
 then
@@ -21,7 +21,6 @@ then
 echo
 echo "Adding repositories..."
 echo
-sudo apt-add-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
 sudo apt-add-repository ppa:graphics-drivers/ppa && sudo apt update -y
 sudo ubuntu-drivers autoinstall
 
