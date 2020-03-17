@@ -17,17 +17,17 @@
   "editor.wordWrapColumn": 100,
   "workbench.sideBar.location": "right",
   "files.associations": {
-    "javascript": "html"
+      "javascript": "html"
   },
   "emmet.includeLanguages": {
-    "javascript": "javascriptreact",
-    "markdown": "html"
+      "javascript": "javascriptreact",
+      "markdown": "html"
   },
   "emmet.syntaxProfiles": {
-    "javascript": "jsx"
+      "javascript": "jsx"
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "sync.gist": "18e20d71bd874b77dcc2c0debdb5815e",
   "discord.lowerDetailsEditing": "{null}",
