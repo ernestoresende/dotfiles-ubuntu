@@ -7,23 +7,30 @@
 #code.deb
 #discord.deb
 #chrome.deb
+#opera.deb
 
-#Get the .deb files from their respective websites and rename then
+#Get the .deb files from their respective websites and rename then to make sure all software will be installed.
+
+# ====================
+# Color definitions
+
+RED="\033[31m"
+GREEN="\033[32m"
+YELLOW="\033[33m"
+BLUE="\033[34m"
+MAGENTA="\033[35m"
+WHITE="\033[37m"
+NORMAL="\033[0;39m"
+
+# ====================
 
 ###Checking for the .deb files
-read -r -p "This script will install some programs using .deb files, and they should be in the same folder you're running the script from. Also, if you're going to use zsh as your shell, I'd recommend that you install and configure it before running this script, or you will have to deal with PATH shennanigans. Do you wish to proceed? [y/n] " RESP
+read -r -p "This script will install some programs using .deb files, and they should be in the same folder you're running the script from. Do you wish to proceed? [y/n] " RESP
 RESP=${RESP,,}    # tolower (only works with /bin/bash)
 if [[ $RESP =~ ^(yes|y)$ ]]
 then
 
 #######
-#Adding repositories and PPA's
-echo
-echo "Adding repositories..."
-echo
-sudo apt-add-repository ppa:graphics-drivers/ppa && sudo apt update -y
-sudo ubuntu-drivers autoinstall
-
 #Update & Upgrade
 echo
 echo "Updating and Upgrading"
@@ -50,16 +57,12 @@ echo "Installing curl..."
 sudo apt install curl -y
 echo
 
-echo "Installing Node Version Manager..."
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.1/install.sh | bash
-echo
-
-echo "Setting up Node.js..."
-nvm use 10
-echo
-
 echo "Installing git and ssh..."
 sudo apt install git ssh -y
+echo
+
+echo
+sudo apt install zsh
 echo
 
 echo "Installing Hyper..."
@@ -93,12 +96,8 @@ echo "Installing Google Chrome..."
 sudo dpkg chrome.deb
 echo
 
-echo "Installing Slack"
-sudo apt install slack -y
-echo
-
-echo "Installing Spotify"
-sudo snap install spotify
+echo "Installing Opera"
+sudo dpkg opera.deb
 echo
 
 printf "\n${GREEN}Utility programs sucessfully installed!${NORMAL}\n"
