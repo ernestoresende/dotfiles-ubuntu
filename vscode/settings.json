@@ -1,0 +1,40 @@
+{
+  "window.zoomLevel": 1,
+  "editor.suggestSelection": "first",
+  "editor.fontFamily": "'Consolas Regular', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.colorTheme": "Dracula",
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": false,
+  "workbench.editor.highlightModifiedTabs": true,
+  "editor.cursorBlinking": "smooth",
+  "editor.cursorSmoothCaretAnimation": true,
+  "files.trimFinalNewlines": true,
+  "editor.minimap.enabled": false,
+  "editor.lineHeight": 22,
+  "editor.tabSize": 2,
+  "editor.useTabStops": false,
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 100,
+  "workbench.sideBar.location": "right",
+  "files.associations": {
+      "javascript": "html"
+  },
+  "emmet.includeLanguages": {
+      "javascript": "javascriptreact, css",
+      "markdown": "html"
+  },
+  "emmet.syntaxProfiles": {
+      "javascript": "jsx, css"
+  },
+  "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "sync.gist": "18e20d71bd874b77dcc2c0debdb5815e",
+  "discord.lowerDetailsEditing": "{null}",
+  "discord.lowerDetailsIdle": "{null}",
+  "discord.lowerDetailsNotFound": "{null}",
+  "discord.workspaceElapsedTime": false,
+  "discord.largeImage": "Editing a {lang} file",
+  "workbench.iconTheme": "material-icon-theme"
+}
