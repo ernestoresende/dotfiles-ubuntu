@@ -16,11 +16,8 @@
   "editor.wordWrap": "wordWrapColumn",
   "editor.wordWrapColumn": 100,
   "workbench.sideBar.location": "right",
-  "files.associations": {
-      "javascript": "html"
-  },
   "emmet.includeLanguages": {
-      "javascript": "javascriptreact",
+      "javascript": "javascriptreact, html",
       "markdown": "html"
   },
   "emmet.syntaxProfiles": {
