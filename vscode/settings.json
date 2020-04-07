@@ -2,43 +2,61 @@
   // Sets the default zoom level on the editor
   "window.zoomLevel": 1,
 
-
   //Configures font family and font size  
   "editor.fontFamily": "Fira Code",
   "editor.fontSize": 15,
-
 
   //Editor configurations for cursor animations, tab sizes and word wraps for long code lines
   "editor.formatOnPaste": false,
   "editor.formatOnSave": false,
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": true,
-  "editor.minimap.enabled": false,
   "editor.lineHeight": 22,
   "editor.tabSize": 2,
   "editor.useTabStops": false,
   "editor.wordWrap": "wordWrapColumn",
   "editor.wordWrapColumn": 100,
   
-
   //Workbench configurations
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.labelFormat": "short",
 
-
-  //Sets VS Code theme to Dracula
-  "workbench.colorTheme": "Dracula",
-
+  //Sets VS Code theme to Material Theme Ocean
+  "workbench.colorTheme": "Material Theme Ocean High Contrast",
 
   //Sets VS Code Icon Theme to Material Icon
   "workbench.iconTheme": "material-icon-theme",
   
-
   //File configurations and file associations
-  "files.trimFinalNewlines": true,
-  "emmet.includeLanguages": { "javascript": "javascriptreact, css" },
-  "emmet.syntaxProfiles": { "javascript": "jsx, css" },
+  "files.trimFinalNewlines": false,
+  "files.insertFinalNewline": true,
+  "emmet.includeLanguages": { "javascript": "javascriptreact" },
+  "emmet.syntaxProfiles": { "javascript": "jsx" },
   "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+
+  //Minimap configurations
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.maxColumn": 200,
+  "editor.minimap.showSlider": "always",
+
+  //Disables telemetry
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+
+  //Experimental function boldening snippet
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": [
+          "entity.name.function",
+          "support.function",
+        ],
+        "settings": {
+          "fontStyle": "bold",
+        }
+      }
+    ]
+  },
 
   // Git Gist sync ID
   "sync.gist": "18e20d71bd874b77dcc2c0debdb5815e",
@@ -48,5 +66,6 @@
   "discord.lowerDetailsIdle": "{null}",
   "discord.lowerDetailsNotFound": "{null}",
   "discord.workspaceElapsedTime": false,
-  "discord.largeImage": "Editing a {lang} file"
+  "discord.largeImage": "Editing a {lang} file",
+  "workbench.colorCustomizations": {},
 }
