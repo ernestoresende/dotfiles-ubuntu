@@ -123,3 +123,11 @@ zinit light zsh-users/zsh-completions
 ```
 
 10. All done... Enjoy the new and enhanced terminal experience.
+
+## Converting regular fonts to web compressed fonts:
+
+If conversion is needed to move fonts from otf/ttf formats to their web compressed counterparts, use the FontSquirrel converter:
+
+[https://www.fontsquirrel.com/tools/webfont-generator](https://www.fontsquirrel.com/tools/webfont-generator)
+
+It will generate webfonts compressed to woff and woff2, alongside with typography guidelines and rendering tests on a demo HTML file.
