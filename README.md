@@ -131,3 +131,31 @@ If conversion is needed to move fonts from otf/ttf formats to their web compress
 [https://www.fontsquirrel.com/tools/webfont-generator](https://www.fontsquirrel.com/tools/webfont-generator)
 
 It will generate webfonts compressed to woff and woff2, alongside with typography guidelines and rendering tests on a demo HTML file.
+
+## Setting up the trackpad gestures on Debian based systems
+
+- [lib-input-gestures](https://github.com/bulletmark/libinput-gestures)
+- [gestures](https://gitlab.com/cunidev/gestures)
+- [List of keycodes](https://gitlab.com/cunidev/gestures/-/wikis/xdotool-list-of-key-codes)
+
+### Settting up
+
+```
+sudo gpasswd -a $USER input
+
+sudo apt-get install wmctrl python3 python3-setuptools xdotool python3-gi libinput-tools python-gobject
+```
+
+Clone the libinput-gestures repo and navigate to it:
+
+```
+sudo make install
+```
+
+Clone gestures repo and navigate to it: 
+
+```
+sudo python3 setup.py install
+```
+
+Open gestures app and configure the gestures you want to use accordingly. The default command to replicate keyboard shortcuts is: ```xdotool key {keyCombinations}```.
