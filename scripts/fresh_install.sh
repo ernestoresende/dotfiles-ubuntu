@@ -1,115 +1,89 @@
 #! /bin/bash
 
-#Script to install important applications on a fresh install of Ubuntu and Debian based systems.
-
-#The following files are required in the same folder of the script for the installation to work:
-#hyper.deb
-#code.deb
-#discord.deb
-#chrome.deb
-#opera.deb
-
-#Get the .deb files from their respective websites and rename then to make sure all software will be installed.
-
-# ====================
-# Color definitions
-
-RED="\033[31m"
-GREEN="\033[32m"
-YELLOW="\033[33m"
-BLUE="\033[34m"
-MAGENTA="\033[35m"
-WHITE="\033[37m"
-NORMAL="\033[0;39m"
+#Script to install important applications for the development enviroment on a fresh install of Ubuntu and Debian based systems.
 
 # ====================
 
-###Checking for the .deb files
-read -r -p "This script will install some programs using .deb files, and they should be in the same folder you're running the script from. Do you wish to proceed? [y/n] " RESP
-RESP=${RESP,,}    # tolower (only works with /bin/bash)
-if [[ $RESP =~ ^(yes|y)$ ]]
+#.deb files presence confirmation:
+read -r -p "The following files need to be on the same folder as this script in order to install all applications and dependencies:
+
+Chrome Dev - Rename do chrome-dev.deb
+Visual Studio Code - Rename do code.deb
+Hyper - Rename to hyper.deb
+Discord - Rename to discord.deb
+
+Do you wish to proceed? [y/N] " response
+response=${response,,}    # tolower
+if [[ "$response" =~ ^(yes|y)$ ]]
 then
 
-#######
-#Update & Upgrade
-echo
-echo "Updating and Upgrading"
-echo
+#Upgrades already existing system packages
+printf "%s\n" "Upgrading system packages..."
 sudo apt-get update && sudo apt-get upgrade -y
+printf "%s\n" " "
 
-#Remove unused programs
-echo
-echo "Removing unused programs..."
-echo
-sudo apt-get remove hexchat hexchat-common thunderbird thunderbird-gnome-support thunderbird-locale-en  thunderbird-locale-en-us  banshee tomboy pidgin pidgin-libnotify -y
-printf "\n${GREEN}System sucessfully updated!${NORMAL}\n"
+#Install .deb files from the script folder
+printf "%s\n" "Installing Chrome Dev..."
+sudo dpkg -i chrome-dev.deb
+printf "%s\n" " "
 
-#Installing development setup
-echo
-printf "\n${YELLOW}Starting the installation of the development setup...${NORMAL}\n"
-echo
-###########
-echo "Installing build-essentials..."
-sudo apt install build-essential -y
-echo
-
-echo "Installing curl..."
-sudo apt install curl -y
-echo
-
-echo "Installing git and ssh..."
-sudo apt install git ssh -y
-echo
-
-echo
-sudo apt install zsh
-echo
-
-echo "Installing Hyper..."
-sudo dpkg -i hyper.deb
-echo
-
-echo "Installing Visual Studio Code and dependencies..."
+printf "%s\n" "Installing Visual Studio Code..."
 sudo dpkg -i code.deb
-sudo apt-get install -f
 xdg-mime default code.desktop text/plain
-echo
-printf "\n${GREEN}Development enviroment sucessfully instaled!${NORMAL}\n"
+printf "%s\n" " "
 
-#Installing utility programs
-printf "\n${GREEN}Starting the installation of utility programs...${NORMAL}\n"
-echo
+printf "%s\n" "Installing Hyper.js..."
+sudo dpkg -i hyper.deb
+printf "%s\n" " "
 
-echo "Installing VLC..."
-sudo apt install vlc -y
-echo
-
-echo "Installing Discord..."
+printf "%s\n" "Installing Discord..."
 sudo dpkg -i discord.deb
-echo
+printf "%s\n" " "
 
-echo "Installing Mailspring..."
-sudo snap install mailspring
-echo
+# Removes unused crap
+printf "%s\n" "Removing unused programs..."
+sudo apt-get remove hexchat hexchat-common thunderbird thunderbird-gnome-support thunderbird-locale-en  thunderbird-locale-en-us  banshee tomboy pidgin pidgin-libnotify -y
+printf "%s\n" " "
 
-echo "Installing Google Chrome..."
-sudo dpkg chrome.deb
-echo
+# Installs essential development tools
+printf "%s\n" "Configuring the development enviroment..."
+sudo apt install build-essential -y
+sudo apt install curl -y
+sudo apt install git ssh -y
+sudo apt install zsh -y
 
-echo "Installing Opera"
-sudo dpkg opera.deb
-echo
+# Configures git:
+printf "%s\n" "Configuring git..." 
+printf "%s\n" "Write your git username:" 
+read USER
+DEFAULT_EMAIL="$USER@users.noreply.github.com"
+read -p "Write your git email [Press enter to accept the private email $DEFAULT_EMAIL]: " EMAIL
+EMAIL="${EMAIL:-${DEFAULT_EMAIL}}"
 
-printf "\n${GREEN}Utility programs sucessfully installed!${NORMAL}\n"
+printf "%s\n" "Configuring global user name and email..."
+git config --global user.name "$USER"
+git config --global user.email "$EMAIL"
 
-#Cleaning up and finishing
-printf "\n${YELLOW}Cleaning up the cache and finishing...${NORMAL}\n"
+printf "%s\n" "Configuring global aliases..."
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.sub "submodule update --remote --merge"
+git config --global core.editor "vim"
+git config --global credential.helper 'cache --timeout=36000'
+
+printf "%s\n" "Adding git credentials..."
+printf "%s\n" "Configuring git ssh access..."
+ssh-keygen -t rsa -b 4096 -C "$EMAIL"
+printf "%s\n" "This is your public key. To activate it in github, go to settings, SHH and GPG keys, New SSH key, and enter the following key:"
+cat ~/.ssh/id_rsa.pub
+
+#Installs missing dependencies, double checks updates and removes cache files:
+printf "%s\n" "Finishing and cleaning up..."
 sudo apt install -f
 sudo apt-get update && sudo apt-get upgrade -y
 sudo apt-get autoclean -y
 sudo apt-get autoremove -y 
-echo
 
-printf "\n${GREEN}All done! Make sure to execute the git_configure.sh to sync your Git to Github.${NORMAL}\n"
-
+else
+  exit 0
 fi
