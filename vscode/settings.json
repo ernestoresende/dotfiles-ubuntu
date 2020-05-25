@@ -2,16 +2,30 @@
   // Sets the default zoom level on the editor
   "window.zoomLevel": 1,
 
+  //Configures font family and font sizes for VS Code internal UI
+  "customizeUI.font.regular": "SF Pro Display",
+  "customizeUI.font.monospace": "Fira Code",
+
+  "customizeUI.fontSizeMap": {
+    "13px": "14px",
+    "12px": "14px",
+    "window-title": "12px", // Window title font when using custom titlebar
+    "tab-title": "13px",    // Used for editor tab titles
+    "monospace": "10.5px",  // Used for monospace fonts in user interface
+},
+
+
   //Configures font family and font size  
   "editor.fontFamily": "Fira Code",
-  "editor.fontSize": 15,
+  "editor.fontSize": 17,
+  "terminal.integrated.fontSize": 15,
 
   //Editor configurations for cursor animations, tab sizes and word wraps for long code lines
   "editor.formatOnPaste": false,
   "editor.formatOnSave": false,
   "editor.cursorBlinking": "smooth",
   "editor.cursorSmoothCaretAnimation": true,
-  "editor.lineHeight": 22,
+  "editor.lineHeight": 24,
   "editor.tabSize": 2,
   "editor.useTabStops": false,
   "editor.wordWrap": "wordWrapColumn",
@@ -20,9 +34,6 @@
   //Workbench configurations
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.editor.labelFormat": "short",
-
-  //Sets VS Code theme to Material Theme Ocean
-  "workbench.colorTheme": "Material Theme Ocean High Contrast",
 
   //Sets VS Code Icon Theme to Material Icon
   "workbench.iconTheme": "material-icon-theme",
@@ -61,11 +72,11 @@
   // Git Gist sync ID
   "sync.gist": "18e20d71bd874b77dcc2c0debdb5815e",
   
-  // Discord Presence configurations
-  "discord.lowerDetailsEditing": "{null}",
-  "discord.lowerDetailsIdle": "{null}",
-  "discord.lowerDetailsNotFound": "{null}",
-  "discord.workspaceElapsedTime": false,
-  "discord.largeImage": "Editing a {lang} file",
   "workbench.colorCustomizations": {},
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorTheme": "Ocean Space Italic",
 }
